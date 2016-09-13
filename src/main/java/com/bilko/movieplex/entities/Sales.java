@@ -1,0 +1,129 @@
+/*
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+ *
+ * Copyright (c) 2013 Oracle and/or its affiliates. All rights reserved.
+ *
+ * The contents of this file are subject to the terms of either the GNU
+ * General Public License Version 2 only ("GPL") or the Common Development
+ * and Distribution License("CDDL") (collectively, the "License").  You
+ * may not use this file except in compliance with the License.  You can
+ * obtain a copy of the License at
+ * https://glassfish.dev.java.net/public/CDDL+GPL_1_1.html
+ * or packager/legal/LICENSE.txt.  See the License for the specific
+ * language governing permissions and limitations under the License.
+ *
+ * When distributing the software, include this License Header Notice in each
+ * file and include the License file at packager/legal/LICENSE.txt.
+ *
+ * GPL Classpath Exception:
+ * Oracle designates this particular file as subject to the "Classpath"
+ * exception as provided by Oracle in the GPL Version 2 section of the License
+ * file that accompanied this code.
+ *
+ * Modifications:
+ * If applicable, add the following below the License Header, with the fields
+ * enclosed by brackets [] replaced by your own identifying information:
+ * "Portions Copyright [year] [name of copyright owner]"
+ *
+ * Contributor(s):
+ * If you wish your version of this file to be governed by only the CDDL or
+ * only the GPL Version 2, indicate your decision by adding "[Contributor]
+ * elects to include this software in this distribution under the [CDDL or GPL
+ * Version 2] license."  If you don't indicate a single choice of license, a
+ * recipient has the option to distribute your version of this file under
+ * either the CDDL, the GPL Version 2 or to extend the choice of license to
+ * its licensees as provided above.  However, if you add GPL Version 2 code
+ * and therefore, elected the GPL Version 2 license, then the option applies
+ * only if the new code is made subject to such option by the copyright
+ * holder.
+ */
+/*
+ * Portions Copyright 2016 Dmitry Bilko
+ */
+package com.bilko.movieplex.entities;
+
+import java.io.Serializable;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@Entity
+@Table(name = "SALES")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Sales.findAll", query = "SELECT s FROM Sales s"),
+    @NamedQuery(name = "Sales.findById", query = "SELECT s FROM Sales s WHERE s.id = :id"),
+    @NamedQuery(name = "Sales.findByAmount", query = "SELECT s FROM Sales s WHERE s.amount = :amount")
+})
+public class Sales implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "ID")
+    private Integer id;
+
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "AMOUNT")
+    private double amount;
+
+    public Sales() { }
+
+    public Sales(final Integer iId) {
+        this.id = iId;
+    }
+
+    public Sales(final Integer iId, final double dAmount) {
+        this.id = iId;
+        this.amount = dAmount;
+    }
+
+    public final Integer getId() {
+        return id;
+    }
+
+    public final void setId(final Integer iId) {
+        this.id = iId;
+    }
+
+    public final double getAmount() {
+        return amount;
+    }
+
+    public final void setAmount(final double dAmount) {
+        this.amount = dAmount;
+    }
+
+    @Override
+    public final int hashCode() {
+        int hash = 0;
+        if (id != null) {
+            hash += id.hashCode();
+        }
+        return hash;
+    }
+
+    @Override
+    public final boolean equals(final Object object) {
+        if (!(object instanceof Sales)) {
+            return false;
+        }
+        final Sales other = (Sales) object;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
+    }
+
+    @Override
+    public final String toString() {
+        return "Sales[id=" + id + "]";
+    }
+}
