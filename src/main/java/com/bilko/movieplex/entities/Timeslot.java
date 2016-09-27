@@ -111,7 +111,7 @@ public class Timeslot implements Serializable {
         this.id = iId;
     }
 
-    final String getStartTime() {
+    public final String getStartTime() {
         return startTime;
     }
 

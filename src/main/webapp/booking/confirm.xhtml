@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <body>
+        <ui:composition template="/WEB-INF/template.xhtml">
+            <ui:define name="content">
+                <c:choose>
+                    <c:when test="#{booking.theater == 'none'}">
+                        <h2>Cinema is not found. Pick another seance</h2>
+                        <h:form>
+                            Title: #{booking.movieName}<p/>
+                            Start time: #{booking.startTime}<p/>
+                            <h:commandButton
+                                id="back"
+                                value="Back"
+                                action="showtimes"/>
+                        </h:form>
+                    </c:when>
+                    <c:otherwise>
+                        <h2>Book it?</h2>
+                        <h:form>
+                            Title: #{booking.movieName}<p/>
+                            Start time: #{booking.startTime}<p/>
+                            Cinema: #{booking.theater}<p/>
+                            <p/><h:commandButton
+                                id="next"
+                                value="Yes"
+                                action="print"/>
+                            <h:commandButton
+                                id="back"
+                                value="Back"
+                                action="showtimes"/>
+                        </h:form>
+                    </c:otherwise>
+                </c:choose>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
