@@ -50,6 +50,8 @@ import javax.inject.Named;
 public class MovieBackingBean {
 
     private int movieId;
+    private String movieName;
+    private String actors;
 
     public int getMovieId() {
         return movieId;
@@ -57,5 +59,21 @@ public class MovieBackingBean {
 
     public void setMovieId(final int movieId) {
         this.movieId = movieId;
+    }
+
+    public String getMovieName() {
+        return movieName;
+    }
+
+    public void setMovieName(final String movieName) {
+        this.movieName = movieName;
+    }
+
+    public String getActors() {
+        return actors;
+    }
+
+    public void setActors(final String actors) {
+        this.actors = actors;
     }
 }

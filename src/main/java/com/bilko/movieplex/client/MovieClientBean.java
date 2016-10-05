@@ -49,9 +49,12 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 
 import com.bilko.movieplex.entities.Movie;
+import com.bilko.movieplex.json.MovieWriter;
 
 @Named
 @RequestScoped
@@ -86,6 +89,18 @@ public class MovieClientBean {
         return target
             .request()
             .get(Movie[].class);
+    }
+
+    public void addMovie() {
+        final Movie movie = new Movie();
+        movie.setId(movieBackingBean.getMovieId());
+        movie.setName(movieBackingBean.getMovieName());
+        movie.setActors(movieBackingBean.getActors());
+
+        target
+            .register(MovieWriter.class)
+            .request()
+            .post(Entity.entity(movie, MediaType.APPLICATION_JSON));
     }
 
     public void deleteMovie() {
