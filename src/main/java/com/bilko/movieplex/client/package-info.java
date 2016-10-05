@@ -1,5 +1,3 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!--
 /*
 * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
 *
@@ -42,52 +40,4 @@
 /*
  * Portions Copyright 2016 Dmitry Bilko
  */
--->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:h="http://xmlns.jcp.org/jsf/html">
-
-    <head>
-        <title>Movieplex</title>
-        <link href="${facesContext.externalContext.requestContextPath}/resources/css/default.css"
-            rel="stylesheet" type="text/css" />
-        <link href="${facesContext.externalContext.requestContextPath}/resources/css/cssLayout.css"
-            rel="stylesheet" type="text/css" />
-    </head>
-
-    <body>
-        <div id="top" class="top">
-            <ui:insert name="top">
-                <h:form>
-                    <h1><h:commandLink value="Movie Plex" action="/index"/></h1>
-                </h:form>
-            </ui:insert>
-        </div>
-        <div>
-            <div id="left">
-                <ui:insert name="left">
-                    <h:form>
-                        <h:commandLink action="booking">Booking</h:commandLink>
-                        <p/>
-                        <h:outputLink
-                            value="${facesContext.externalContext.requestContextPath}/faces/chat/chatroom.xhtml">
-                                Chat Room
-                        </h:outputLink>
-                        <p/>
-                        <h:outputLink
-                            value="${facesContext.externalContext.requestContextPath}/faces/client/movies.xhtml">
-                                Movies
-                        </h:outputLink>
-                    </h:form>
-                </ui:insert>
-            </div>
-            <div id="content" class="left_content">
-                <ui:insert name="content">Content</ui:insert>
-            </div>
-        </div>
-    </body>
-</html>
+package com.bilko.movieplex.client;
