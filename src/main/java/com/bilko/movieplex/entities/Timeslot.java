@@ -103,41 +103,41 @@ public class Timeslot implements Serializable {
         this.endTime = sEndTime;
     }
 
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
-    public final void setId(final Integer iId) {
+    public void setId(final Integer iId) {
         this.id = iId;
     }
 
-    public final String getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public final void setStartTime(final String sStartTime) {
+    public void setStartTime(final String sStartTime) {
         this.startTime = sStartTime;
     }
 
-    public final String getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public final void setEndTime(final String sEndTime) {
+    public void setEndTime(final String sEndTime) {
         this.endTime = sEndTime;
     }
 
     @XmlTransient
-    public final Collection<ShowTiming> getShowTimings() {
+    public Collection<ShowTiming> getShowTimings() {
         return showTimings;
     }
 
-    public final void setShowTimings(final Collection<ShowTiming> aShowTimings) {
+    public void setShowTimings(final Collection<ShowTiming> aShowTimings) {
         this.showTimings = aShowTimings;
     }
 
     @Override
-    public final int hashCode() {
+    public int hashCode() {
         int hash = 0;
         if (id != null) {
             hash += id.hashCode();
@@ -146,7 +146,7 @@ public class Timeslot implements Serializable {
     }
 
     @Override
-    public final boolean equals(final Object object) {
+    public boolean equals(final Object object) {
         if (!(object instanceof Timeslot)) {
             return false;
         }
@@ -155,7 +155,7 @@ public class Timeslot implements Serializable {
     }
 
     @Override
-    public final String toString() {
+    public String toString() {
         return startTime;
     }
 }

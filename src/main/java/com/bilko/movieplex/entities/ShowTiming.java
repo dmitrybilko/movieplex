@@ -98,48 +98,48 @@ public class ShowTiming implements Serializable {
         this.day = iDay;
     }
 
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
-    public final void setId(final Integer iId) {
+    public void setId(final Integer iId) {
         this.id = iId;
     }
 
-    public final int getDay() {
+    public int getDay() {
         return day;
     }
 
-    public final void setDay(final int iDay) {
+    public void setDay(final int iDay) {
         this.day = iDay;
     }
 
-    public final Timeslot getTimeslot() {
+    public Timeslot getTimeslot() {
         return timeslot;
     }
 
-    public final void setTimeslot(final Timeslot oTimeslot) {
+    public void setTimeslot(final Timeslot oTimeslot) {
         this.timeslot = oTimeslot;
     }
 
-    public final Theater getTheater() {
+    public Theater getTheater() {
         return theater;
     }
 
-    public final void setTheater(final Theater oTheater) {
+    public void setTheater(final Theater oTheater) {
         this.theater = oTheater;
     }
 
-    public final Movie getMovie() {
+    public Movie getMovie() {
         return movie;
     }
 
-    public final void setMovie(final Movie oMovie) {
+    public void setMovie(final Movie oMovie) {
         this.movie = oMovie;
     }
 
     @Override
-    public final int hashCode() {
+    public int hashCode() {
         int hash = 0;
         if (id != null) {
             hash += id.hashCode();
@@ -148,7 +148,7 @@ public class ShowTiming implements Serializable {
     }
 
     @Override
-    public final boolean equals(final Object object) {
+    public boolean equals(final Object object) {
         if (!(object instanceof ShowTiming)) {
             return false;
         }
@@ -157,7 +157,7 @@ public class ShowTiming implements Serializable {
     }
 
     @Override
-    public final String toString() {
+    public String toString() {
         return movie.getName() + ", " + timeslot.getStartTime();
     }
 }

@@ -88,24 +88,24 @@ public class Sales implements Serializable {
         this.amount = dAmount;
     }
 
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
-    public final void setId(final Integer iId) {
+    public void setId(final Integer iId) {
         this.id = iId;
     }
 
-    public final double getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public final void setAmount(final double dAmount) {
+    public void setAmount(final double dAmount) {
         this.amount = dAmount;
     }
 
     @Override
-    public final int hashCode() {
+    public int hashCode() {
         int hash = 0;
         if (id != null) {
             hash += id.hashCode();
@@ -114,7 +114,7 @@ public class Sales implements Serializable {
     }
 
     @Override
-    public final boolean equals(final Object object) {
+    public boolean equals(final Object object) {
         if (!(object instanceof Sales)) {
             return false;
         }
@@ -123,7 +123,7 @@ public class Sales implements Serializable {
     }
 
     @Override
-    public final String toString() {
+    public String toString() {
         return "Sales[id=" + id + "]";
     }
 }

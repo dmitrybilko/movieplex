@@ -100,41 +100,41 @@ public class Movie implements Serializable {
         this.actors = sActors;
     }
 
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
-    public final void setId(final Integer iId) {
+    public void setId(final Integer iId) {
         this.id = iId;
     }
 
-    public final String getName() {
+    public String getName() {
         return name;
     }
 
-    public final void setName(final String sName) {
+    public void setName(final String sName) {
         this.name = sName;
     }
 
-    public final String getActors() {
+    public String getActors() {
         return actors;
     }
 
-    public final void setActors(final String sActors) {
+    public void setActors(final String sActors) {
         this.actors = sActors;
     }
 
     @XmlTransient
-    public final Collection<ShowTiming> getShowTimings() {
+    public Collection<ShowTiming> getShowTimings() {
         return showTimings;
     }
 
-    public final void setShowTimings(final Collection<ShowTiming> aShowTimings) {
+    public void setShowTimings(final Collection<ShowTiming> aShowTimings) {
         this.showTimings = aShowTimings;
     }
 
     @Override
-    public final int hashCode() {
+    public int hashCode() {
         int hash = 0;
         if (id != null) {
             hash += id.hashCode();
@@ -143,7 +143,7 @@ public class Movie implements Serializable {
     }
 
     @Override
-    public final boolean equals(final Object object) {
+    public boolean equals(final Object object) {
         if (!(object instanceof Movie)) {
             return false;
         }
@@ -152,7 +152,7 @@ public class Movie implements Serializable {
     }
 
     @Override
-    public final String toString() {
+    public String toString() {
         return name;
     }
 }

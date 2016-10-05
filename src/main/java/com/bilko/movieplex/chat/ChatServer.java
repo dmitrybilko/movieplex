@@ -60,17 +60,17 @@ public class ChatServer {
     private static final Set<Session> PEERS = Collections.synchronizedSet(new HashSet<Session>());
 
     @OnOpen
-    public final void onOpen(final Session peer) {
+    public void onOpen(final Session peer) {
         PEERS.add(peer);
     }
 
     @OnClose
-    public final void onClose(final Session peer) {
+    public void onClose(final Session peer) {
         PEERS.remove(peer);
     }
 
     @OnMessage
-    public final void message(final String message, final Session client) throws IOException, EncodeException {
+    public void message(final String message, final Session client) throws IOException, EncodeException {
         for (final Session peer : PEERS) {
             peer.getBasicRemote().sendObject(message);
         }

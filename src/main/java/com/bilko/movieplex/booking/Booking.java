@@ -24,15 +24,15 @@ public class Booking implements Serializable {
     private String startTime;
     private int startTimeId;
 
-    public final int getMovieId() {
+    public int getMovieId() {
         return movieId;
     }
 
-    public final void setMovieId(final int iMovieId) {
+    public void setMovieId(final int iMovieId) {
         movieId = iMovieId;
     }
 
-    public final String getMovieName() {
+    public String getMovieName() {
         try {
             return entityManager
                 .createNamedQuery("Movie.findById", Movie.class)
@@ -44,21 +44,21 @@ public class Booking implements Serializable {
         }
     }
 
-    public final String getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public final void setStartTime(final String sStartTime) {
+    public void setStartTime(final String sStartTime) {
         final StringTokenizer tokens = new StringTokenizer(sStartTime, ",");
         startTimeId = Integer.parseInt(tokens.nextToken());
         startTime = tokens.nextToken();
     }
 
-    public final int getStartTimeId() {
+    public int getStartTimeId() {
         return startTimeId;
     }
 
-    public final String getTheater() {
+    public String getTheater() {
         try {
             final List<ShowTiming> showTimings = entityManager
                 .createNamedQuery("ShowTiming.findByMovieAndTimeslotId", ShowTiming.class)

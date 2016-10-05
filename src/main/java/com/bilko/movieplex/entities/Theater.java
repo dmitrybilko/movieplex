@@ -89,33 +89,33 @@ public class Theater implements Serializable {
         this.capacity = iCapacity;
     }
 
-    public final Integer getId() {
+    public Integer getId() {
         return id;
     }
 
-    public final void setId(final Integer iId) {
+    public void setId(final Integer iId) {
         this.id = iId;
     }
 
-    public final int getCapacity() {
+    public int getCapacity() {
         return capacity;
     }
 
-    public final void setCapacity(final int iCapacity) {
+    public void setCapacity(final int iCapacity) {
         this.capacity = iCapacity;
     }
 
     @XmlTransient
-    public final Collection<ShowTiming> getShowTimings() {
+    public Collection<ShowTiming> getShowTimings() {
         return showTimings;
     }
 
-    public final void setShowTimings(final Collection<ShowTiming> aShowTimings) {
+    public void setShowTimings(final Collection<ShowTiming> aShowTimings) {
         this.showTimings = aShowTimings;
     }
 
     @Override
-    public final int hashCode() {
+    public int hashCode() {
         int hash = 0;
         if (id != null) {
             hash += id.hashCode();
@@ -124,7 +124,7 @@ public class Theater implements Serializable {
     }
 
     @Override
-    public final boolean equals(final Object object) {
+    public boolean equals(final Object object) {
         if (!(object instanceof Theater)) {
             return false;
         }
@@ -133,7 +133,7 @@ public class Theater implements Serializable {
     }
 
     @Override
-    public final String toString() {
+    public String toString() {
         return "Theater[id=" + id + "]";
     }
 }
