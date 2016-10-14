@@ -53,6 +53,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * JPA entity corresponding database table {@code SHOW_TIMINGS}.
+ *
+ * @see Timeslot
+ * @see Theater
+ * @see Movie
+ * @since 1.0
+ */
 @Entity
 @Table(name = "SHOW_TIMINGS")
 @XmlRootElement
@@ -86,55 +94,97 @@ public class ShowTiming implements Serializable {
     @ManyToOne(optional = false)
     private Movie movie;
 
+    /**
+     * Constructor for {@code ShowTiming}
+     */
     public ShowTiming() { }
 
-    public ShowTiming(final Integer iId) {
-        this.id = iId;
+    /**
+     * Constructor for {@code ShowTiming}
+     * @param id of {@code ShowTiming}
+     */
+    public ShowTiming(final Integer id) {
+        this.id = id;
     }
 
-    public ShowTiming(final Integer iId, final int iDay) {
-        this.id = iId;
-        this.day = iDay;
+    /**
+     * Constructor for {@code ShowTiming}
+     * @param id of {@code ShowTiming}
+     * @param day of {@code ShowTiming}
+     */
+    public ShowTiming(final Integer id, final int day) {
+        this.id = id;
+        this.day = day;
     }
 
+    /**
+     * Returns value of {@link ShowTiming#id}
+     */
     public Integer getId() {
         return id;
     }
 
-    public void setId(final Integer iId) {
-        this.id = iId;
+    /**
+     * Sets value of {@link ShowTiming#id}
+     */
+    public void setId(final Integer id) {
+        this.id = id;
     }
 
+    /**
+     * Returns value of {@link ShowTiming#day}
+     */
     public int getDay() {
         return day;
     }
 
-    public void setDay(final int iDay) {
-        this.day = iDay;
+    /**
+     * Sets value of {@link ShowTiming#day}
+     */
+    public void setDay(final int day) {
+        this.day = day;
     }
 
+    /**
+     * Returns value of {@link ShowTiming#timeslot}
+     */
     public Timeslot getTimeslot() {
         return timeslot;
     }
 
-    public void setTimeslot(final Timeslot oTimeslot) {
-        this.timeslot = oTimeslot;
+    /**
+     * Sets value of {@link ShowTiming#timeslot}
+     */
+    public void setTimeslot(final Timeslot timeslot) {
+        this.timeslot = timeslot;
     }
 
+    /**
+     * Returns value of {@link ShowTiming#theater}
+     */
     public Theater getTheater() {
         return theater;
     }
 
-    public void setTheater(final Theater oTheater) {
-        this.theater = oTheater;
+    /**
+     * Sets value of {@link ShowTiming#theater}
+     */
+    public void setTheater(final Theater theater) {
+        this.theater = theater;
     }
 
+    /**
+     * Returns value of {@link ShowTiming#movie}
+     */
     public Movie getMovie() {
         return movie;
     }
 
-    public void setMovie(final Movie oMovie) {
-        this.movie = oMovie;
+    /**
+     * Sets value of {@link ShowTiming#movie}
+     */
+    public void setMovie(final Movie movie) {
+        this.movie = movie;
     }
 
     @Override

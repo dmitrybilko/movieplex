@@ -41,8 +41,17 @@
  */
 package com.bilko.movieplex.util;
 
+/**
+ * Util class to store constants.
+ *
+ * @author Dmitry Bilko
+ * @since 1.0
+ */
 public final class Constants {
 
+    /**
+     * Private constructor for {@code Constants} class
+     */
     private Constants() { }
 
     public static final int NAME_MAX_SIZE = 50;

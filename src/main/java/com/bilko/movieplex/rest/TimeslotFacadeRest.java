@@ -56,8 +56,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import com.bilko.movieplex.entities.Movie;
 import com.bilko.movieplex.entities.Timeslot;
 
+/**
+ * Implementation class of {@link AbstractFacade} related to {@link Timeslot} JPA entity.
+ */
 @Named
 @Stateless
 @Path("timeslots")
@@ -66,6 +70,9 @@ public class TimeslotFacadeRest extends AbstractFacade<Timeslot> {
     @PersistenceContext
     protected EntityManager entityManager;
 
+    /**
+     * Public constructor for {@code TimeslotFacadeRest} class.
+     */
     public TimeslotFacadeRest() {
         super(Timeslot.class);
     }
@@ -85,12 +92,21 @@ public class TimeslotFacadeRest extends AbstractFacade<Timeslot> {
         super.edit(timeslot);
     }
 
+    /**
+     * @see AbstractFacade#remove(Object)
+     * @param id of {@link Timeslot} to be removed
+     */
     @DELETE
     @Path("{id}")
     public void remove(@PathParam("id") final Integer id) {
         super.remove(super.find(id));
     }
 
+    /**
+     * @see AbstractFacade#find(Object)
+     * @param id of required {@link Timeslot}
+     * @return found {@link Timeslot} instance
+     */
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
@@ -105,6 +121,12 @@ public class TimeslotFacadeRest extends AbstractFacade<Timeslot> {
         return super.getAll();
     }
 
+    /**
+     * @see AbstractFacade#findRange(int[])
+     * @param from value for range
+     * @param to value for range
+     * @return {@link List} of found {@link Timeslot}s
+     */
     @GET
     @Path("{from}/{to}")
     @Produces({"application/xml", "application/json"})
@@ -112,6 +134,10 @@ public class TimeslotFacadeRest extends AbstractFacade<Timeslot> {
         return super.findRange(new int[] {from, to});
     }
 
+    /**
+     * Returns amount of stored {@link Timeslot}s
+     * @return amount of stored {@link Timeslot}s
+     */
     @GET
     @Path("count")
     @Produces("text/plain")
