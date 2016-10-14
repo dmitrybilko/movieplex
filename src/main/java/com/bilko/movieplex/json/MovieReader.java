@@ -57,6 +57,11 @@ import javax.ws.rs.ext.Provider;
 
 import com.bilko.movieplex.entities.Movie;
 
+/**
+ * {@link MessageBodyReader}'s implementation used to read JSON representation of {@link Movie}.
+ *
+ * @since 1.0
+ */
 @Provider
 @Consumes(MediaType.APPLICATION_JSON)
 public class MovieReader implements MessageBodyReader<Movie> {

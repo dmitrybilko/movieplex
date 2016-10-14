@@ -54,6 +54,14 @@ import javax.persistence.PersistenceContext;
 import com.bilko.movieplex.entities.Movie;
 import com.bilko.movieplex.entities.ShowTiming;
 
+/**
+ * This bean used to perform operations related to booking.
+ *
+ * @see EntityManager
+ * @see Movie
+ * @see ShowTiming
+ * @since 1.0
+ */
 @Named
 @FlowScoped("booking")
 public class Booking implements Serializable {
@@ -65,14 +73,25 @@ public class Booking implements Serializable {
     private String startTime;
     private int startTimeId;
 
+    /**
+     * Returns required movie's id.
+     */
     public int getMovieId() {
         return movieId;
     }
 
-    public void setMovieId(final int iMovieId) {
-        movieId = iMovieId;
+    /**
+     * Sets required movie's id.
+     * @param movieId of required movie
+     */
+    public void setMovieId(final int movieId) {
+        this.movieId = movieId;
     }
 
+    /**
+     * Returns required movie's name according to its id.
+     * @return name of required movie
+     */
     public String getMovieName() {
         try {
             return entityManager
@@ -85,20 +104,36 @@ public class Booking implements Serializable {
         }
     }
 
+    /**
+     * Returns start time of booked seance.
+     * @return start time of booked seance
+     */
     public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(final String sStartTime) {
-        final StringTokenizer tokens = new StringTokenizer(sStartTime, ",");
-        startTimeId = Integer.parseInt(tokens.nextToken());
-        startTime = tokens.nextToken();
+    /**
+     * Performs syntax analysis and sets start time of booked seance and its id.
+     * @param startTime of booked seance
+     */
+    public void setStartTime(final String startTime) {
+        final StringTokenizer tokens = new StringTokenizer(startTime, ",");
+        this.startTimeId = Integer.parseInt(tokens.nextToken());
+        this.startTime = tokens.nextToken();
     }
 
+    /**
+     * Returns id of start time of booked seance.
+     * @return id of start time of booked seance
+     */
     public int getStartTimeId() {
         return startTimeId;
     }
 
+    /**
+     * Returns theater's id where required seance to be shown.
+     * @return theater's id where required seance to be shown
+     */
     public String getTheater() {
         try {
             final List<ShowTiming> showTimings = entityManager

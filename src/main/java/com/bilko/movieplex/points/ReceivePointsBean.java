@@ -53,6 +53,14 @@ import javax.jms.JMSException;
 import javax.jms.Queue;
 import javax.jms.QueueBrowser;
 
+/**
+ * This bean used to receive JMS messages to perform operations related to bonus points.
+ *
+ * @see JMSContext
+ * @see Queue
+ * @see QueueBrowser
+ * @since 1.0
+ */
 @JMSDestinationDefinition(name = "java:global/jms/pointsQueue", interfaceName = "javax.jms.Queue")
 @Named
 @RequestScoped
@@ -64,6 +72,10 @@ public class ReceivePointsBean {
     @Resource(lookup = "java:global/jms/pointsQueue")
     private Queue pointsQueue;
 
+    /**
+     * Returns received JMS message.
+     * @return body of JMS message
+     */
     public String receiveMessage() {
         final String message = context
             .createConsumer(pointsQueue)
@@ -72,6 +84,10 @@ public class ReceivePointsBean {
         return message;
     }
 
+    /**
+     * Returns {@link Queue}'s size.
+     * @return {@link Queue}'s size
+     */
     public int getQueueSize() {
         int count = 0;
         try {

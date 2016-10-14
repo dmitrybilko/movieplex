@@ -49,6 +49,12 @@ import javax.inject.Named;
 
 import com.bilko.movieplex.entities.Sales;
 
+/**
+ * {@link ItemProcessor}'s implementation used to operate with input and output items for batch processing.
+ *
+ * @see Sales
+ * @since 1.0
+ */
 @Named
 @Dependent
 public class SalesProcessor implements ItemProcessor {

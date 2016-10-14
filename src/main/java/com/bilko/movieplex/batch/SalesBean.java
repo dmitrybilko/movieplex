@@ -54,6 +54,14 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+/**
+ * This bean used to run suitable batch job and return {@link Sales} data.
+ *
+ * @see EntityManager
+ * @see BatchRuntime
+ * @see JobOperator
+ * @since 1.0
+ */
 @Named
 @RequestScoped
 public class SalesBean {
@@ -61,6 +69,9 @@ public class SalesBean {
     @PersistenceContext
     private EntityManager manager;
 
+    /**
+     * Runs batch job.
+     */
     public void runJob() {
         try {
             final JobOperator operator = BatchRuntime.getJobOperator();
@@ -71,6 +82,9 @@ public class SalesBean {
         }
     }
 
+    /**
+     * Returns all {@link Sales} entries stored in database.
+     */
     public List<Sales> getSalesData() {
         return manager
             .createNamedQuery("Sales.findAll", Sales.class)

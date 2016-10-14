@@ -50,6 +50,13 @@ import javax.jms.Queue;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+/**
+ * This bean used to send JMS messages to perform operations related to bonus points.
+ *
+ * @see JMSContext
+ * @see Queue
+ * @since 1.0
+ */
 @Named
 @RequestScoped
 public class SendPointsBean {
@@ -64,14 +71,23 @@ public class SendPointsBean {
     @Resource(lookup = "java:global/jms/pointsQueue")
     private Queue pointsQueue;
 
+    /**
+     * Returns message to be sent.
+     */
     public String getMessage() {
         return message;
     }
 
+    /**
+     * Sets message to be sent.
+     */
     public void setMessage(final String message) {
         this.message = message;
     }
 
+    /**
+     * Sends given message to consumer.
+     */
     public void sendMessage() {
         System.out.println("Sending message: " + message);
         context.createProducer().send(pointsQueue, message);

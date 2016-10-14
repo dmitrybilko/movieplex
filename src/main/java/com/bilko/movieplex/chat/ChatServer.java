@@ -53,21 +53,38 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+/**
+ * This class represents WebSocket endpoint to establish connection between users via chat.
+ *
+ * @since 1.0
+ */
 @ServerEndpoint("/websocket")
 public class ChatServer {
 
     private static final Set<Session> PEERS = Collections.synchronizedSet(new HashSet<Session>());
 
+    /**
+     * Initializes WebSocket connection.
+     * @see OnOpen
+     */
     @OnOpen
     public void onOpen(final Session peer) {
         PEERS.add(peer);
     }
 
+    /**
+     * Closes WebSocket connection.
+     * @see OnClose
+     */
     @OnClose
     public void onClose(final Session peer) {
         PEERS.remove(peer);
     }
 
+    /**
+     * Receives WebSocket message.
+     * @see OnMessage
+     */
     @OnMessage
     public void message(final String message, final Session client) throws IOException, EncodeException {
         for (final Session peer : PEERS) {

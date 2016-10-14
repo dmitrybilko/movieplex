@@ -53,6 +53,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * JPA entity corresponding database table {@code SALES}.
+ *
+ * @since 1.0
+ */
 @Entity
 @Table(name = "SALES")
 @XmlRootElement
@@ -76,31 +81,55 @@ public class Sales implements Serializable {
     @Column(name = "AMOUNT")
     private double amount;
 
+    /**
+     * Constructor for {@code Sales}
+     */
     public Sales() { }
 
-    public Sales(final Integer iId) {
-        this.id = iId;
+    /**
+     * Constructor for {@code Sales}
+     * @param id of sale
+     */
+    public Sales(final Integer id) {
+        this.id = id;
     }
 
-    public Sales(final Integer iId, final double dAmount) {
-        this.id = iId;
-        this.amount = dAmount;
+    /**
+     * Constructor for {@code Sales}
+     * @param id of sale
+     * @param amount of sale
+     */
+    public Sales(final Integer id, final double amount) {
+        this.id = id;
+        this.amount = amount;
     }
 
+    /**
+     * Returns value of {@link Sales#id}
+     */
     public Integer getId() {
         return id;
     }
 
-    public void setId(final Integer iId) {
-        this.id = iId;
+    /**
+     * Sets value of {@link Sales#id}
+     */
+    public void setId(final Integer id) {
+        this.id = id;
     }
 
+    /**
+     * Returns value of {@link Sales#amount}
+     */
     public double getAmount() {
         return amount;
     }
 
-    public void setAmount(final double dAmount) {
-        this.amount = dAmount;
+    /**
+     * Sets value of {@link Sales#amount}
+     */
+    public void setAmount(final double amount) {
+        this.amount = amount;
     }
 
     @Override

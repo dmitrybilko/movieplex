@@ -60,6 +60,12 @@ import javax.xml.bind.annotation.XmlTransient;
 import static com.bilko.movieplex.util.Constants.END_TIME_MAX_SIZE;
 import static com.bilko.movieplex.util.Constants.START_TIME_MAX_SIZE;
 
+/**
+ * JPA entity corresponding database table {@code TIMESLOTS}.
+ *
+ * @see ShowTiming
+ * @since 1.0
+ */
 @Entity
 @Table(name = "TIMESLOTS")
 @XmlRootElement
@@ -90,49 +96,86 @@ public class Timeslot implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "timeslot")
     private Collection<ShowTiming> showTimings;
 
+    /**
+     * Constructor for {@code Timeslot}
+     */
     public Timeslot() { }
 
-    public Timeslot(final Integer iId) {
-        this.id = iId;
+    /**
+     * Constructor for {@code Timeslot}
+     * @param id of {@code Timeslot}
+     */
+    public Timeslot(final Integer id) {
+        this.id = id;
     }
 
-    public Timeslot(final Integer iId, final String sStartTime, final String sEndTime) {
-        this.id = iId;
-        this.startTime = sStartTime;
-        this.endTime = sEndTime;
+    /**
+     * Constructor for {@code Timeslot}
+     * @param id of {@code Timeslot}
+     * @param startTime of {@code Timeslot}
+     * @param endTime of {@code Timeslot}
+     */
+    public Timeslot(final Integer id, final String startTime, final String endTime) {
+        this.id = id;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
+    /**
+     * Returns value of {@link Timeslot#id}
+     */
     public Integer getId() {
         return id;
     }
 
-    public void setId(final Integer iId) {
-        this.id = iId;
+    /**
+     * Sets value of {@link Timeslot#id}
+     */
+    public void setId(final Integer id) {
+        this.id = id;
     }
 
+    /**
+     * Returns value of {@link Timeslot#startTime}
+     */
     public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(final String sStartTime) {
-        this.startTime = sStartTime;
+    /**
+     * Sets value of {@link Timeslot#startTime}
+     */
+    public void setStartTime(final String startTime) {
+        this.startTime = startTime;
     }
 
+    /**
+     * Returns value of {@link Timeslot#endTime}
+     */
     public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(final String sEndTime) {
-        this.endTime = sEndTime;
+    /**
+     * Sets value of {@link Timeslot#endTime}
+     */
+    public void setEndTime(final String endTime) {
+        this.endTime = endTime;
     }
 
+    /**
+     * Returns value of {@link Timeslot#showTimings}
+     */
     @XmlTransient
     public Collection<ShowTiming> getShowTimings() {
         return showTimings;
     }
 
-    public void setShowTimings(final Collection<ShowTiming> aShowTimings) {
-        this.showTimings = aShowTimings;
+    /**
+     * Sets value of {@link Timeslot#showTimings}
+     */
+    public void setShowTimings(final Collection<ShowTiming> showTimings) {
+        this.showTimings = showTimings;
     }
 
     @Override

@@ -46,65 +46,107 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 
+/**
+ * Abstract EJB component to perform CRUD operations over JPA entities.
+ * @param <T> JPA entity class
+ */
 abstract class AbstractFacade<T> {
 
     private Class<T> entityClass;
 
-    public AbstractFacade(final Class<T> oEntityClass) {
-        this.entityClass = oEntityClass;
+    /**
+     * Public constructor for {@code AbstractFacade} class.
+     * @param entityClass of current implementation
+     */
+    public AbstractFacade(final Class<T> entityClass) {
+        this.entityClass = entityClass;
     }
 
+    /**
+     * Returns {@link EntityManager}'s instance for current {@link AbstractFacade}'s implementation.
+     * @return {@link EntityManager}'s instance
+     */
     protected abstract EntityManager getEntityManager();
 
+    /**
+     * @see EntityManager#persist(Object)
+     * @param entity instance
+     */
     public void create(final T entity) {
         getEntityManager().persist(entity);
     }
 
+    /**
+     * @see EntityManager#merge(Object)
+     * @param entity instance
+     */
     public void edit(final T entity) {
         getEntityManager().merge(entity);
     }
 
+    /**
+     * @see EntityManager#remove(Object)
+     * @param entity instance
+     */
     public void remove(final T entity) {
         getEntityManager().remove(getEntityManager().merge(entity));
     }
 
+    /**
+     * @see EntityManager#find(Class, Object)
+     * @param id of required entity
+     * @return found entity instance or null if entity with given id doesn't exist
+     */
     public T find(final Object id) {
         return getEntityManager().find(entityClass, id);
     }
 
+    /**
+     * Returns all the entities instances stored in database.
+     * @return {@link List} of found entities instances
+     */
     @SuppressWarnings("unchecked")
     public List<T> getAll() {
-        final CriteriaQuery oCriteriaQuery = getEntityManager()
+        final CriteriaQuery criteriaQuery = getEntityManager()
                 .getCriteriaBuilder()
                 .createQuery();
-        oCriteriaQuery.select(oCriteriaQuery.from(entityClass));
+        criteriaQuery.select(criteriaQuery.from(entityClass));
 
         return getEntityManager()
-                .createQuery(oCriteriaQuery)
+                .createQuery(criteriaQuery)
                 .getResultList();
     }
 
+    /**
+     * Returns all the entities instances according to specified range.
+     * @param range of found entities instances
+     * @return {@link List} of found entities instances
+     */
     @SuppressWarnings("unchecked")
-    public List<T> findRange(final int[] aRange) {
-        final CriteriaQuery oCriteriaQuery = getEntityManager()
+    public List<T> findRange(final int[] range) {
+        final CriteriaQuery criteriaQuery = getEntityManager()
                 .getCriteriaBuilder()
                 .createQuery();
-        oCriteriaQuery.select(oCriteriaQuery.from(entityClass));
+        criteriaQuery.select(criteriaQuery.from(entityClass));
 
         return getEntityManager()
-                .createQuery(oCriteriaQuery)
-                .setMaxResults(aRange[1] - aRange[0])
-                .setFirstResult(aRange[0])
+                .createQuery(criteriaQuery)
+                .setMaxResults(range[1] - range[0])
+                .setFirstResult(range[0])
                 .getResultList();
     }
 
+    /**
+     * Returns amount of stored entity instances.
+     * @return amount of stored entity instances
+     */
     @SuppressWarnings("unchecked")
     public int count() {
-        final CriteriaQuery oCriteriaQuery = getEntityManager()
+        final CriteriaQuery criteriaQuery = getEntityManager()
                 .getCriteriaBuilder()
                 .createQuery();
-        oCriteriaQuery.select(getEntityManager().getCriteriaBuilder().count(oCriteriaQuery.from(entityClass)));
+        criteriaQuery.select(getEntityManager().getCriteriaBuilder().count(criteriaQuery.from(entityClass)));
 
-        return ((Long) getEntityManager().createQuery(oCriteriaQuery).getSingleResult()).intValue();
+        return ((Long) getEntityManager().createQuery(criteriaQuery).getSingleResult()).intValue();
     }
 }

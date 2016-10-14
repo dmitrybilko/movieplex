@@ -47,9 +47,17 @@ import java.io.InputStreamReader;
 import java.io.Serializable;
 
 import javax.batch.api.chunk.AbstractItemReader;
+import javax.batch.api.chunk.ItemReader;
 import javax.enterprise.context.Dependent;
 import javax.inject.Named;
 
+/**
+ * {@link AbstractItemReader}'s extension used to read items for batch processing.
+ *
+ * @see ItemReader
+ * @see BufferedReader
+ * @since 1.0
+ */
 @Named
 @Dependent
 public class SalesReader extends AbstractItemReader {

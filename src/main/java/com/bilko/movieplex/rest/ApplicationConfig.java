@@ -44,5 +44,14 @@ package com.bilko.movieplex.rest;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+/**
+ * This class defines base path to REST endpoints.
+ *
+ * @see MovieFacadeRest
+ * @see ShowTimingFacadeRest
+ * @see TheaterFacadeRest
+ * @see TimeslotFacadeRest
+ * @since 1.0
+ */
 @ApplicationPath("webresources")
 public class ApplicationConfig extends Application { }

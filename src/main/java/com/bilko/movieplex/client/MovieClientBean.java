@@ -55,6 +55,11 @@ import javax.ws.rs.core.MediaType;
 import com.bilko.movieplex.entities.Movie;
 import com.bilko.movieplex.json.MovieWriter;
 
+/**
+ * This class used to call REST endpoint for {@link Movie}'s performance.
+ *
+ * @since 1.0
+ */
 @Named
 @RequestScoped
 public class MovieClientBean {
@@ -65,17 +70,29 @@ public class MovieClientBean {
     @Inject
     private MovieBackingBean movieBackingBean;
 
+    /**
+     * Initializes {@link Client} and {@link WebTarget} variables.
+     * @see PostConstruct
+     */
     @PostConstruct
     public void init() {
         client = ClientBuilder.newClient();
         target = client.target("http://localhost:8080/movieplex/webresources/movies/");
     }
 
+    /**
+     * @see Client#close()
+     * @see PreDestroy
+     */
     @PreDestroy
     public void destroy() {
         client.close();
     }
 
+    /**
+     * Prepares GET request to return chosen movie.
+     * @return chosen movie
+     */
     public Movie getMovie() {
         return target
             .path("{movie}")
@@ -84,12 +101,19 @@ public class MovieClientBean {
             .get(Movie.class);
     }
 
+    /**
+     * Prepares GET request to return all available movies.
+     * @return list of available movies
+     */
     public Movie[] getMovies() {
         return target
             .request()
             .get(Movie[].class);
     }
 
+    /**
+     * Prepares POST request to add movie to application.
+     */
     public void addMovie() {
         final Movie movie = new Movie();
         movie.setId(movieBackingBean.getMovieId());
@@ -102,6 +126,9 @@ public class MovieClientBean {
             .post(Entity.entity(movie, MediaType.APPLICATION_JSON));
     }
 
+    /**
+     * Prepares DELETE request to delete movie from application.
+     */
     public void deleteMovie() {
         target
             .path("{movie}")

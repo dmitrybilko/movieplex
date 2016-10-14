@@ -57,6 +57,11 @@ import javax.ws.rs.ext.Provider;
 
 import com.bilko.movieplex.entities.Movie;
 
+/**
+ * {@link MessageBodyWriter}'s implementation used to write JSON representation of {@link Movie}.
+ *
+ * @since 1.0
+ */
 @Provider
 @Produces(MediaType.APPLICATION_JSON)
 public class MovieWriter implements MessageBodyWriter<Movie> {

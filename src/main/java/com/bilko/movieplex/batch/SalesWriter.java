@@ -44,6 +44,7 @@ package com.bilko.movieplex.batch;
 import java.util.List;
 
 import javax.batch.api.chunk.AbstractItemWriter;
+import javax.batch.api.chunk.ItemWriter;
 import javax.enterprise.context.Dependent;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -52,6 +53,13 @@ import javax.transaction.Transactional;
 
 import com.bilko.movieplex.entities.Sales;
 
+/**
+ * {@link AbstractItemWriter}'s extension used to write items for batch processing.
+ *
+ * @see ItemWriter
+ * @see Sales
+ * @since 1.0
+ */
 @Named
 @Dependent
 public class SalesWriter extends AbstractItemWriter {

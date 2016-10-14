@@ -58,6 +58,9 @@ import javax.ws.rs.Produces;
 
 import com.bilko.movieplex.entities.Theater;
 
+/**
+ * Implementation class of {@link AbstractFacade} related to {@link Theater} JPA entity.
+ */
 @Named
 @Stateless
 @Path("theaters")
@@ -66,6 +69,9 @@ public class TheaterFacadeRest extends AbstractFacade<Theater> {
     @PersistenceContext
     protected EntityManager entityManager;
 
+    /**
+     * Public constructor for {@code TheaterFacadeRest} class.
+     */
     public TheaterFacadeRest() {
         super(Theater.class);
     }
@@ -85,12 +91,21 @@ public class TheaterFacadeRest extends AbstractFacade<Theater> {
         super.edit(theater);
     }
 
+    /**
+     * @see AbstractFacade#remove(Object)
+     * @param id of {@link Theater} to be removed
+     */
     @DELETE
     @Path("{id}")
     public void remove(@PathParam("id") final Integer id) {
         super.remove(super.find(id));
     }
 
+    /**
+     * @see AbstractFacade#find(Object)
+     * @param id of required {@link Theater}
+     * @return found {@link Theater} instance
+     */
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
@@ -105,6 +120,12 @@ public class TheaterFacadeRest extends AbstractFacade<Theater> {
         return super.getAll();
     }
 
+    /**
+     * @see AbstractFacade#findRange(int[])
+     * @param from value for range
+     * @param to value for range
+     * @return {@link List} of found {@link Theater}s
+     */
     @GET
     @Path("{from}/{to}")
     @Produces({"application/xml", "application/json"})
@@ -112,6 +133,10 @@ public class TheaterFacadeRest extends AbstractFacade<Theater> {
         return super.findRange(new int[] {from, to});
     }
 
+    /**
+     * Returns amount of stored {@link Theater}s
+     * @return amount of stored {@link Theater}s
+     */
     @GET
     @Path("count")
     @Produces("text/plain")

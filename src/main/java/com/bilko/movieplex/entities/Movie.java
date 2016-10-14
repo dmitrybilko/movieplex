@@ -59,6 +59,12 @@ import javax.xml.bind.annotation.XmlTransient;
 import static com.bilko.movieplex.util.Constants.ACTORS_MAX_NUMBER;
 import static com.bilko.movieplex.util.Constants.NAME_MAX_SIZE;
 
+/**
+ * JPA entity corresponding database table {@code MOVIES}.
+ *
+ * @see ShowTiming
+ * @since 1.0
+ */
 @Entity
 @Table(name = "MOVIES")
 @XmlRootElement
@@ -87,49 +93,86 @@ public class Movie implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "movie")
     private Collection<ShowTiming> showTimings;
 
+    /**
+     * Public constructor for {@code Movie} class
+     */
     public Movie() { }
 
-    public Movie(final Integer iId) {
-        this.id = iId;
+    /**
+     * Public constructor for {@code Movie} class
+     * @param id of {@code Movie}
+     */
+    public Movie(final Integer id) {
+        this.id = id;
     }
 
-    public Movie(final Integer iId, final String sName, final String sActors) {
-        this.id = iId;
-        this.name = sName;
-        this.actors = sActors;
+    /**
+     * Public constructor for {@code Movie} class
+     * @param id of {@code Movie}
+     * @param name of {@code Movie}
+     * @param actors of {@code Movie}
+     */
+    public Movie(final Integer id, final String name, final String actors) {
+        this.id = id;
+        this.name = name;
+        this.actors = actors;
     }
 
+    /**
+     * Returns value of {@link Movie#id}
+     */
     public Integer getId() {
         return id;
     }
 
-    public void setId(final Integer iId) {
-        this.id = iId;
+    /**
+     * Sets value of {@link Movie#id}
+     */
+    public void setId(final Integer id) {
+        this.id = id;
     }
 
+    /**
+     * Returns value of {@link Movie#name}
+     */
     public String getName() {
         return name;
     }
 
-    public void setName(final String sName) {
-        this.name = sName;
+    /**
+     * Sets value of {@link Movie#name}
+     */
+    public void setName(final String name) {
+        this.name = name;
     }
 
+    /**
+     * Returns value of {@link Movie#actors}
+     */
     public String getActors() {
         return actors;
     }
 
-    public void setActors(final String sActors) {
-        this.actors = sActors;
+    /**
+     * Sets value of {@link Movie#actors}
+     */
+    public void setActors(final String actors) {
+        this.actors = actors;
     }
 
+    /**
+     * Returns value of {@link Movie#showTimings}
+     */
     @XmlTransient
     public Collection<ShowTiming> getShowTimings() {
         return showTimings;
     }
 
-    public void setShowTimings(final Collection<ShowTiming> aShowTimings) {
-        this.showTimings = aShowTimings;
+    /**
+     * Sets value of {@link Movie#showTimings}
+     */
+    public void setShowTimings(final Collection<ShowTiming> showTimings) {
+        this.showTimings = showTimings;
     }
 
     @Override

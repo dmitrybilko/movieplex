@@ -55,6 +55,12 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ * JPA entity corresponding database table {@code THEATERS}.
+ *
+ * @see ShowTiming
+ * @since 1.0
+ */
 @Entity
 @Table(name = "THEATERS")
 @XmlRootElement
@@ -77,40 +83,70 @@ public class Theater implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "theater")
     private Collection<ShowTiming> showTimings;
 
+    /**
+     * Constructor for {@code Theater}
+     */
     public Theater() { }
 
-    public Theater(final Integer iId) {
-        this.id = iId;
+    /**
+     * Constructor for {@code Theater}
+     * @param id of {@code Theater}
+     */
+    public Theater(final Integer id) {
+        this.id = id;
     }
 
-    public Theater(final Integer iId, final int iCapacity) {
-        this.id = iId;
-        this.capacity = iCapacity;
+    /**
+     * Constructor for {@code Theater}
+     * @param id of {@code Theater}
+     * @param capacity of {@code Theater}
+     */
+    public Theater(final Integer id, final int capacity) {
+        this.id = id;
+        this.capacity = capacity;
     }
 
+    /**
+     * Returns value of {@link Theater#id}
+     */
     public Integer getId() {
         return id;
     }
 
-    public void setId(final Integer iId) {
-        this.id = iId;
+    /**
+     * Sets value of {@link Theater#id}
+     */
+    public void setId(final Integer id) {
+        this.id = id;
     }
 
+    /**
+     * Returns value of {@link Theater#capacity}
+     */
     public int getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(final int iCapacity) {
-        this.capacity = iCapacity;
+    /**
+     * Sets value of {@link Theater#capacity}
+     */
+    public void setCapacity(final int capacity) {
+        this.capacity = capacity;
     }
 
+    /**
+     * Returns value of {@link Theater#showTimings}
+     */
     @XmlTransient
     public Collection<ShowTiming> getShowTimings() {
         return showTimings;
     }
 
-    public void setShowTimings(final Collection<ShowTiming> aShowTimings) {
-        this.showTimings = aShowTimings;
+    /**
+     * Sets value of {@link Theater#showTimings}
+     */
+    public void setShowTimings(final Collection<ShowTiming> showTimings) {
+        this.showTimings = showTimings;
     }
 
     @Override

@@ -58,6 +58,9 @@ import javax.ws.rs.Produces;
 
 import com.bilko.movieplex.entities.ShowTiming;
 
+/**
+ * Implementation class of {@link AbstractFacade} related to {@link ShowTiming} JPA entity.
+ */
 @Named
 @Stateless
 @Path("showtimings")
@@ -66,6 +69,9 @@ public class ShowTimingFacadeRest extends AbstractFacade<ShowTiming> {
     @PersistenceContext
     protected EntityManager entityManager;
 
+    /**
+     * Public constructor for {@code ShowTimingFacadeRest} class.
+     */
     public ShowTimingFacadeRest() {
         super(ShowTiming.class);
     }
@@ -85,12 +91,21 @@ public class ShowTimingFacadeRest extends AbstractFacade<ShowTiming> {
         super.edit(timing);
     }
 
+    /**
+     * @see AbstractFacade#remove(Object)
+     * @param id of {@link ShowTiming} to be removed
+     */
     @DELETE
     @Path("{id}")
     public void remove(@PathParam("id") final Integer id) {
         super.remove(super.find(id));
     }
 
+    /**
+     * @see AbstractFacade#find(Object)
+     * @param id of required {@link ShowTiming}
+     * @return found {@link ShowTiming} instance
+     */
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
@@ -105,6 +120,12 @@ public class ShowTimingFacadeRest extends AbstractFacade<ShowTiming> {
         return super.getAll();
     }
 
+    /**
+     * @see AbstractFacade#findRange(int[])
+     * @param from value for range
+     * @param to value for range
+     * @return {@link List} of found {@link ShowTiming}s
+     */
     @GET
     @Path("{from}/{to}")
     @Produces({"application/xml", "application/json"})
@@ -112,6 +133,10 @@ public class ShowTimingFacadeRest extends AbstractFacade<ShowTiming> {
         return super.findRange(new int[] {from, to});
     }
 
+    /**
+     * Returns amount of stored {@link ShowTiming}s
+     * @return amount of stored {@link ShowTiming}s
+     */
     @GET
     @Path("count")
     @Produces("text/plain")

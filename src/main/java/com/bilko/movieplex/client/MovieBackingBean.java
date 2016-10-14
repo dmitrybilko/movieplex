@@ -44,6 +44,13 @@ package com.bilko.movieplex.client;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
+import com.bilko.movieplex.entities.Movie;
+
+/**
+ * This class used to read characteristics of chosen {@link Movie}.
+ *
+ * @since 1.0
+ */
 @Named
 @RequestScoped
 public class MovieBackingBean {
@@ -52,26 +59,47 @@ public class MovieBackingBean {
     private String movieName;
     private String actors;
 
+    /**
+     * Returns movie's id.
+     * @return movie's id
+     */
     public int getMovieId() {
         return movieId;
     }
 
+    /**
+     * Sets movie's id.
+     */
     public void setMovieId(final int movieId) {
         this.movieId = movieId;
     }
 
+    /**
+     * Returns movie's name.
+     * @return movie's name
+     */
     public String getMovieName() {
         return movieName;
     }
 
+    /**
+     * Sets movie's name.
+     */
     public void setMovieName(final String movieName) {
         this.movieName = movieName;
     }
 
+    /**
+     * Returns list of actors played in considered movie.
+     * @return list of movie's actors
+     */
     public String getActors() {
         return actors;
     }
 
+    /**
+     * Sets list of actors played in considered movie.
+     */
     public void setActors(final String actors) {
         this.actors = actors;
     }
