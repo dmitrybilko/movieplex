@@ -56,9 +56,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import com.bilko.movieplex.entities.Movie;
 import com.bilko.movieplex.entities.ShowTiming;
-import com.bilko.movieplex.entities.Theater;
 
 /**
  * Implementation class of {@link AbstractFacade} related to {@link ShowTiming} JPA entity.

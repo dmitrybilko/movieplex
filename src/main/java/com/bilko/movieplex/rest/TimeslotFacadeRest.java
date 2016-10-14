@@ -56,7 +56,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import com.bilko.movieplex.entities.Movie;
 import com.bilko.movieplex.entities.Timeslot;
 
 /**
